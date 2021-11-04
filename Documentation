@@ -4,3 +4,6 @@ All attributes Volvo and Saab had in common was declared in Car. Avoids code dup
 
 All methods in common were put in Car. They are put to public. If they were abstract, we would need to override them in
 each subclass, thus defeating the purpose of inheriting to avoid code duplication.
+
+All attributes that subclasses have in common have been moved to superclass and the different values assigned from
+beginning have been set as default
