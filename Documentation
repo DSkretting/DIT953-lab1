@@ -1,0 +1,3 @@
+Create supertype Car in its own file.
+
+All attributes Volvo and Saab had in common was declared in Car. Avoids duplication.
