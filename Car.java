@@ -7,8 +7,11 @@ public abstract class Car {
     public Color color; // Color of the car
     public String modelName; // The car model name
 
-    public Car(){
-
+    public Car(int nrDoors, Color color, double enginePower, String modelName){
+        this.nrDoors = nrDoors;
+        this.color = color;
+        this.enginePower = enginePower;
+        this.modelName = modelName;
 
     }
     public int getNrDoors(){
@@ -37,4 +40,5 @@ public abstract class Car {
     public void stopEngine(){
         currentSpeed = 0;
     }
+
 }

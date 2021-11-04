@@ -1,3 +1,6 @@
-Create supertype Car in its own file.
+Create abstract supertype Car in its own file.
 
-All attributes Volvo and Saab had in common was declared in Car. Avoids duplication.
+All attributes Volvo and Saab had in common was declared in Car. Avoids code duplication.
+
+All methods in common were put in Car. They are put to public. If they were abstract, we would need to override them in
+each subclass, thus defeating the purpose of inheriting to avoid code duplication.
