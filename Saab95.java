@@ -5,7 +5,7 @@ public class Saab95 extends Car{
     public boolean turboOn;
 
     public Saab95() {
-        super(2, Color.red, 125, "Saab95");
+        super(2, Color.red, 125, "Saab95", 0);
         turboOn = false;
         stopEngine();
     }
@@ -32,7 +32,7 @@ public class Saab95 extends Car{
     public void decrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
-    
+
     // TODO fix this method according to lab pm
     public void gas(double amount){
         incrementSpeed(amount);
