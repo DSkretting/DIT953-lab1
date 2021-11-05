@@ -40,5 +40,10 @@ public abstract class Car {
     protected void stopEngine(){
         currentSpeed = 0;
     }
+    abstract public double speedFactor();
+
+    abstract protected void incrementSpeed(double amount);
+
+    abstract protected void decrementSpeed(double amount);
 
 }

@@ -7,3 +7,9 @@ each subclass, thus defeating the purpose of inheriting to avoid code duplicatio
 
 All attributes that subclasses have in common have been moved to superclass and the different values assigned from
 beginning have been set as default
+
+increment and decrement speed have been set as abstract methods, as they are are a necessary part of the interface,
+but they differ from subclass to subclass.
+
+
+
