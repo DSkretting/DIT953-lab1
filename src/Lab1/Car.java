@@ -18,7 +18,7 @@ public abstract class Car implements Movable {
     protected double xCoordinates;
     protected Point2D[] turnList;
     protected String i;
-    protected int angle;
+    protected double angle;
     protected double currentx;
     protected double currenty;
 
@@ -44,39 +44,44 @@ public abstract class Car implements Movable {
         while (!Objects.equals(i, "q")) {
             i = in.next();
             switch (i) {
-                case "w" -> move();
-                case "d" -> turnLeft();
-                case "a" -> turnRight();
+                case "w" -> is_moving();
+                case "a" -> turnLeft();
+                case "d" -> turnRight();
                 case "s" -> stopEngine();
 
             }
         }
     }
 
+    public void is_moving() {
+        while (currentSpeed > 0) {
+            i = in.next();
+            switch (i) {
+                case "a" -> turnLeft();
+                case "d" -> turnRight();
+                }
+            move();
+
+
+        }
+    }
+
     public void move() {
         currentx = xCoordinates;
         currenty = yCoordinates;
-        xCoordinates = currentSpeed * (currentx * Math.cos(angle) - currenty * Math.sin(angle));
-        yCoordinates = currentSpeed * (currentx * Math.sin(angle) - currenty * Math.cos(angle));
+        xCoordinates = currentx + (currentSpeed * Math.sin(angle));
+        yCoordinates = currenty + (currentSpeed * Math.cos(angle));
         System.out.println(xCoordinates);
         System.out.println(yCoordinates);
     }
-
     public void turnLeft() {
-        if (angle != 0) {
-            angle -= 1;
-        } else {
-            angle = 359;
-        }
+        angle -= 1/(2* Math.PI);
     }
 
     public void turnRight() {
-        if (angle != 359) {
-            angle += 1;
-        } else {
-            angle = 0;
-        }
+        angle += 1/(2* Math.PI);
     }
+
 
     protected int getNrDoors() {
         return nrDoors;
