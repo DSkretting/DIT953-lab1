@@ -32,22 +32,39 @@ public abstract class Car {
 
     }
 
-    protected Point2D inputPanel(){
+    protected void inputPanel() {
         while (!Objects.equals(i, "q")) {
             i = in.next();
-            if (Object.equals(i, "w")){
-                move();
-            }
-            else if (Object.equals(i, "d")){
-                turnLeft();
-            }
-            else if (Object.equals(i, "a")){
-            }
-            else if (Object.equals(i, "s")){
-            }
+            switch (i) {
+                case "w" -> move();
+                case "d" -> turnLeft();
+                case "a" -> turnRight();
+                case "s" -> stopEngine();
 
+
+
+            }
         }
     }
+
+
+
+//    protected Point2D inputPanel(){
+//        while (!Objects.equals(i, "q")) {
+//            i = in.next();
+//            if (Object.equals(i, "w")){
+//                move();
+//            }
+//            else if (Object.equals(i, "d")){
+//                turnLeft();
+//            }
+//            else if (Object.equals(i, "a")){
+//            }
+//            else if (Object.equals(i, "s")){
+//            }
+//
+//        }
+//    }
     protected void move(){
     }
 
