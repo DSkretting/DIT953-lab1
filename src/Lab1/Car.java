@@ -5,6 +5,7 @@ import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
 import java.lang.Math;
+import java.awt.event.KeyEvent;
 
 
 public abstract class Car implements Movable {
@@ -37,7 +38,6 @@ public abstract class Car implements Movable {
                 new Point2D.Double(xCoordinates, yCoordinates-currentSpeed),
                 new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};*/
         this.angle = angle;
-
     }
 
     public void inputPanel() {
@@ -48,7 +48,6 @@ public abstract class Car implements Movable {
                 case "a" -> turnLeft();
                 case "d" -> turnRight();
                 case "s" -> stopEngine();
-
             }
         }
     }
@@ -61,8 +60,6 @@ public abstract class Car implements Movable {
                 case "d" -> turnRight();
                 }
             move();
-
-
         }
     }
 
