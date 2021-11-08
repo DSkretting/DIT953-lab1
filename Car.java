@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
+import java.lang.Math;
 
 
 public abstract class Car {
@@ -15,8 +16,12 @@ public abstract class Car {
     protected double xCoordinates;
     protected Point2D[] turnList;
     protected String i;
+    protected int angle;
+    protected double currentx;
+    protected double currenty;
 
-    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates){
+
+    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle){
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -29,6 +34,7 @@ public abstract class Car {
                 new Point2D.Double(xCoordinates+currentSpeed, yCoordinates),
                 new Point2D.Double(xCoordinates, yCoordinates-currentSpeed),
                 new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};
+        this.angle = angle;
 
     }
 
@@ -40,38 +46,34 @@ public abstract class Car {
                 case "d" -> turnLeft();
                 case "a" -> turnRight();
                 case "s" -> stopEngine();
-
-
-
             }
         }
     }
-
-
-
-//    protected Point2D inputPanel(){
-//        while (!Objects.equals(i, "q")) {
-//            i = in.next();
-//            if (Object.equals(i, "w")){
-//                move();
-//            }
-//            else if (Object.equals(i, "d")){
-//                turnLeft();
-//            }
-//            else if (Object.equals(i, "a")){
-//            }
-//            else if (Object.equals(i, "s")){
-//            }
-//
-//        }
-//    }
     protected void move(){
+        currentx = xCoordinates;
+        currenty = yCoordinates;
+        xCoordinates = currentSpeed * (currentx * Math.cos(angle)-currenty * Math.sin(angle));
+        yCoordinates = currentSpeed * (currentx * Math.sin(angle)-currenty * Math.cos(angle));
+        System.out.println(xCoordinates);
+        System.out.println(yCoordinates);
     }
 
     protected void turnLeft(){
+        if (angle != 0) {
+            angle -= 1;
+        }
+        else{
+            angle = 359;
+        }
     }
 
     protected void turnRight(){
+        if (angle != 359) {
+            angle += 1;
+        }
+        else {
+            angle = 0;
+        }
     }
     protected int getNrDoors(){
         return nrDoors;
