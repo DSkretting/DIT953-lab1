@@ -16,7 +16,7 @@ public abstract class Car {
     protected Point2D[] turnList;
     protected String i;
 
-    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double yCoordinates, double xCoordinates,){
+    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates){
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -36,12 +36,26 @@ public abstract class Car {
         while (!Objects.equals(i, "q")) {
             i = in.next();
             if (Object.equals(i, "w")){
-                move()
+                move();
             }
+            else if (Object.equals(i, "d")){
+                turnLeft();
+            }
+            else if (Object.equals(i, "a")){
+            }
+            else if (Object.equals(i, "s")){
+            }
+
         }
     }
-    protected
+    protected void move(){
+    }
 
+    protected void turnLeft(){
+    }
+
+    protected void turnRight(){
+    }
     protected int getNrDoors(){
         return nrDoors;
     }
