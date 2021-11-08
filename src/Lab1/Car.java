@@ -1,3 +1,5 @@
+package Lab1;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.*;
@@ -5,7 +7,7 @@ import java.util.List;
 import java.lang.Math;
 
 
-public abstract class Car {
+public abstract class Car implements Movable {
     Scanner in = new Scanner(System.in);
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
@@ -21,7 +23,7 @@ public abstract class Car {
     protected double currenty;
 
 
-    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle){
+    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -29,16 +31,16 @@ public abstract class Car {
         this.currentSpeed = currentSpeed;
         this.yCoordinates = yCoordinates;
         this.xCoordinates = xCoordinates;
-        this.turnList = new Point2D[]{
+        /*this.turnList = new Point2D[]{
                 new Point2D.Double(xCoordinates, yCoordinates+currentSpeed),
                 new Point2D.Double(xCoordinates+currentSpeed, yCoordinates),
                 new Point2D.Double(xCoordinates, yCoordinates-currentSpeed),
-                new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};
+                new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};*/
         this.angle = angle;
 
     }
 
-    protected void inputPanel() {
+    public void inputPanel() {
         while (!Objects.equals(i, "q")) {
             i = in.next();
             switch (i) {
@@ -46,61 +48,64 @@ public abstract class Car {
                 case "d" -> turnLeft();
                 case "a" -> turnRight();
                 case "s" -> stopEngine();
+
             }
         }
     }
-    protected void move(){
+
+    public void move() {
         currentx = xCoordinates;
         currenty = yCoordinates;
-        xCoordinates = currentSpeed * (currentx * Math.cos(angle)-currenty * Math.sin(angle));
-        yCoordinates = currentSpeed * (currentx * Math.sin(angle)-currenty * Math.cos(angle));
+        xCoordinates = currentSpeed * (currentx * Math.cos(angle) - currenty * Math.sin(angle));
+        yCoordinates = currentSpeed * (currentx * Math.sin(angle) - currenty * Math.cos(angle));
         System.out.println(xCoordinates);
         System.out.println(yCoordinates);
     }
 
-    protected void turnLeft(){
+    public void turnLeft() {
         if (angle != 0) {
             angle -= 1;
-        }
-        else{
+        } else {
             angle = 359;
         }
     }
 
-    protected void turnRight(){
+    public void turnRight() {
         if (angle != 359) {
             angle += 1;
-        }
-        else {
+        } else {
             angle = 0;
         }
     }
-    protected int getNrDoors(){
+
+    protected int getNrDoors() {
         return nrDoors;
     }
-    protected double getEnginePower(){
+
+    protected double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed(){
+    protected double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor(){
+    protected Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr){
+    protected void setColor(Color clr) {
         color = clr;
     }
 
-    protected void startEngine(){
+    protected void startEngine() {
         currentSpeed = 0.1;
     }
 
-    protected void stopEngine(){
+    protected void stopEngine() {
         currentSpeed = 0;
     }
+
     abstract public double speedFactor();
 
     abstract protected void incrementSpeed(double amount);
