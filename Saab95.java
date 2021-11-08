@@ -22,8 +22,7 @@ public class Saab95 extends Car{
     public double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
-    }
+        return enginePower * 0.01 * turbo; }
 
     public void incrementSpeed(double amount){
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
@@ -34,7 +33,7 @@ public class Saab95 extends Car{
     }
 
     // TODO fix this method according to lab pm
-    public void gas(double amount){
+    public void gs(double amount){
         incrementSpeed(amount);
     }
 

@@ -47,8 +47,6 @@ public abstract class Car {
         }
     }
 
-
-
 //    protected Point2D inputPanel(){
 //        while (!Objects.equals(i, "q")) {
 //            i = in.next();
@@ -66,6 +64,7 @@ public abstract class Car {
 //        }
 //    }
     protected void move(){
+
     }
 
     protected void turnLeft(){
