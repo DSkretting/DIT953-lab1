@@ -1,15 +1,19 @@
 package Lab1;
 
+import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
 import java.lang.Math;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 
-public abstract class Car implements Movable {
-    Scanner in = new Scanner(System.in);
+public abstract class Car implements Movable{
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -40,43 +44,23 @@ public abstract class Car implements Movable {
         this.angle = angle;
     }
 
-    public void inputPanel() {
-        while (!Objects.equals(i, "q")) {
-            i = in.next();
-            switch (i) {
-                case "w" -> is_moving();
-                case "a" -> turnLeft();
-                case "d" -> turnRight();
-                case "s" -> stopEngine();
-            }
-        }
-    }
-
-    public void is_moving() {
-        while (currentSpeed > 0) {
-            i = in.next();
-            switch (i) {
-                case "a" -> turnLeft();
-                case "d" -> turnRight();
-                }
-            move();
-        }
-    }
-
     public void move() {
-        currentx = xCoordinates;
-        currenty = yCoordinates;
-        xCoordinates = currentx + (currentSpeed * Math.sin(angle));
-        yCoordinates = currenty + (currentSpeed * Math.cos(angle));
-        System.out.println(xCoordinates);
-        System.out.println(yCoordinates);
+        while (true) {
+            currentx = xCoordinates;
+            currenty = yCoordinates;
+            xCoordinates = currentx + (currentSpeed * Math.sin(angle));
+            yCoordinates = currenty + (currentSpeed * Math.cos(angle));
+            System.out.println(xCoordinates);
+            System.out.println(yCoordinates);
+        }
     }
+
     public void turnLeft() {
-        angle -= 1/(2* Math.PI);
+        angle -= 1 / (2 * Math.PI);
     }
 
     public void turnRight() {
-        angle += 1/(2* Math.PI);
+        angle += 1 / (2 * Math.PI);
     }
 
 
