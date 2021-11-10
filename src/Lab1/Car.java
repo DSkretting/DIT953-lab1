@@ -1,8 +1,6 @@
 package Lab1;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyAdapter;
 import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
@@ -10,10 +8,9 @@ import java.lang.Math;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
-
-public abstract class Car implements Movable{
+public abstract class Car implements Movable {
+    Scanner in = new Scanner(System.in);
     protected int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
@@ -27,6 +24,9 @@ public abstract class Car implements Movable{
     protected double currentx;
     protected double currenty;
 
+    //public Game(){
+   //    addKeyListener(new KeyListener())
+
 
     protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle) {
         this.nrDoors = nrDoors;
@@ -37,30 +37,43 @@ public abstract class Car implements Movable{
         this.yCoordinates = yCoordinates;
         this.xCoordinates = xCoordinates;
         /*this.turnList = new Point2D[]{
-                new Point2D.Double(xCoordinates, yCoordinates+currentSpeed),
+                n  ew Point2D.Double(xCoordinates, yCoordinates+currentSpeed),
                 new Point2D.Double(xCoordinates+currentSpeed, yCoordinates),
                 new Point2D.Double(xCoordinates, yCoordinates-currentSpeed),
                 new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};*/
         this.angle = angle;
     }
 
-    public void move() {
-        while (true) {
-            currentx = xCoordinates;
-            currenty = yCoordinates;
-            xCoordinates = currentx + (currentSpeed * Math.sin(angle));
-            yCoordinates = currenty + (currentSpeed * Math.cos(angle));
-            System.out.println(xCoordinates);
-            System.out.println(yCoordinates);
-        }
+    public void moveCar(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_W);
+
     }
 
+//    public void keyPressed(KeyEvent e) {
+//        while (currentSpeed > 0) {
+//            i = in.next();
+//            switch (asd) {
+//                case KeyEvent.VK_A -> turnLeft();
+//                case KeyEvent.VK_D -> turnRight();
+//                }
+//            move();
+//        }
+//    }
+
+    public void move() {
+        currentx = xCoordinates;
+        currenty = yCoordinates;
+        xCoordinates = currentx + (currentSpeed * Math.sin(angle));
+        yCoordinates = currenty + (currentSpeed * Math.cos(angle));
+        System.out.println(xCoordinates);
+        System.out.println(yCoordinates);
+    }
     public void turnLeft() {
-        angle -= 1 / (2 * Math.PI);
+        angle -= 1/(2* Math.PI);
     }
 
     public void turnRight() {
-        angle += 1 / (2 * Math.PI);
+        angle += 1/(2* Math.PI);
     }
 
 
