@@ -6,19 +6,24 @@ import java.awt.event.KeyEvent;
 
 public class Main {
     Car c;
+    boolean right;
+    boolean left;
+    boolean release;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         Main main = new Main();
         main.c = new Saab95();
         main.run();
     }
 
-    public void run() {
+    public void run() throws InterruptedException {
         System.out.println("start");
         JFrame f = createWindow();
         listen(f);
         System.out.println("End");
-        c.move();
+        while (true) {
+            c.move();
+        }
     }
 
     private JFrame createWindow() {
@@ -33,9 +38,14 @@ public class Main {
         f.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e == c.turnRight();
-                System.out.println(c.angle);
+                if (e.getKeyCode() == KeyEvent.VK_A) {
+                    c.turnLeft();
+                }
+                else if (e.getKeyCode() == KeyEvent.VK_D){
+                    c.turnRight();
+                }
             }
+
         });
     }
 }
