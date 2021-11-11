@@ -36,31 +36,26 @@ public abstract class Car implements Movable{
         this.currentSpeed = currentSpeed;
         this.yCoordinates = yCoordinates;
         this.xCoordinates = xCoordinates;
-        /*this.turnList = new Point2D[]{
-                new Point2D.Double(xCoordinates, yCoordinates+currentSpeed),
-                new Point2D.Double(xCoordinates+currentSpeed, yCoordinates),
-                new Point2D.Double(xCoordinates, yCoordinates-currentSpeed),
-                new Point2D.Double(xCoordinates-currentSpeed, yCoordinates)};*/
         this.angle = angle;
     }
 
-    public void move() {
-        while (true) {
+    public void move() throws InterruptedException{
             currentx = xCoordinates;
             currenty = yCoordinates;
             xCoordinates = currentx + (currentSpeed * Math.sin(angle));
             yCoordinates = currenty + (currentSpeed * Math.cos(angle));
             System.out.println(xCoordinates);
             System.out.println(yCoordinates);
-        }
+            Thread.sleep(500);
+
     }
 
     public void turnLeft() {
-        angle -= 1 / (2 * Math.PI);
+            angle -= Math.PI/2;
     }
 
     public void turnRight() {
-        angle += 1 / (2 * Math.PI);
+            angle += Math.PI/2;
     }
 
 
