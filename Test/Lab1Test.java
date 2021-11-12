@@ -53,7 +53,7 @@ class Lab1Test {
 //    @Test
 //    void SaabName() {
 //        saab95 = new Saab95();
-//        assertEquals("Lab1.Saab95", saab95.getModelName());
+//        assertEquals("Saab95", saab95.getModelName());
 //    }
     @Test
     void SaabCurrentSpeed() {
