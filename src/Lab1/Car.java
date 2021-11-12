@@ -28,7 +28,7 @@ public abstract class Car implements Movable{
     protected double currenty;
 
 
-    protected Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle) {
+    public Car(int nrDoors, Color color, double enginePower, String modelName, double currentSpeed, double xCoordinates, double yCoordinates, int angle) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -58,32 +58,31 @@ public abstract class Car implements Movable{
             angle += Math.PI/2;
     }
 
-
-    protected int getNrDoors() {
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    protected double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr) {
+    public void setColor(Color clr) {
         color = clr;
     }
 
-    protected void startEngine() {
+    public void startEngine() {
         currentSpeed = 0.1;
     }
 
-    protected void stopEngine() {
+    public void stopEngine() {
         currentSpeed = 0;
     }
 
